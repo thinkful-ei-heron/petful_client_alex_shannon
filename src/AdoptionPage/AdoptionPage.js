@@ -6,7 +6,8 @@ class AdoptionPage extends Component {
     currentDog: null,
     users: null,
     usersList: null,
-    userName: null
+    userName: null,
+    createUserInterval: null,
   }
 
   createUserList = () => {
@@ -29,7 +30,10 @@ class AdoptionPage extends Component {
       currentDog: this.props.petsData.firstDog,
       users: this.props.petsData.users
     })
-    setInterval(this.createUserList, 1000)
+    let createUserInterval = setInterval(this.createUserList, 1000)
+    this.setState({
+      createUserInterval
+    })
   }
 
   static getDerivedStateFromProps = (props, state) => {
@@ -81,6 +85,10 @@ class AdoptionPage extends Component {
       userName: null
     })
     this.props.adoptBoth();
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.state.createUserInterval);
   }
 
   render() {

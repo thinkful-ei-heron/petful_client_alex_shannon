@@ -9,7 +9,27 @@ class App extends Component {
   state = {
     firstDog: {},
     firstCat: {},
-    users: []
+    users: [],
+    successes: []
+  }
+
+  setSuccessStories = () => {
+    let url = 'http://localhost:8000/api/'
+    fetch(url + 'successes', {
+      method: 'GET',
+      headers: { 'content-type': 'application/json' }
+    })
+      .then(res => {
+        if(!res.ok) {
+          throw new Error(res.status)
+        }
+        return res.json()
+      })
+      .then(data => {
+        this.setState({
+          successes: data
+        })
+      })
   }
 
   setUsers = () => {
@@ -157,10 +177,16 @@ class App extends Component {
     this.setFirstCat();
     this.setFirstDog();
     this.setUsers();
+    this.setSuccessStories();
 
     setInterval(this.setUsers, 5000);
     setInterval(this.setFirstCat, 5000);
     setInterval(this.setFirstDog, 5000);
+    setInterval(this.setSuccessStories, 5000);
+  }
+
+  componentWillUnmount() {
+    clearInterval();
   }
   render() {
     return (
@@ -188,7 +214,9 @@ class App extends Component {
         <Route path='/Pets' render={() => {
           return <PetsPage petsData={this.state} />
         }} />
-        <Route path='/Success' component={SuccessPage} />
+        <Route path='/Success' render = {() => {
+          return <SuccessPage successes={this.state.successes} />
+        }}/>
 
       </div>
     )
