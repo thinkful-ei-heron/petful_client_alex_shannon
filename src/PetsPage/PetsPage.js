@@ -11,7 +11,7 @@ class PetsPage extends Component {
   handleNextDog = () => {
     if(this.state.currentDog.next) {
       this.setState({
-        currentDog: this.state.currentDog.next.value
+        currentDog: this.state.currentDog.next
       })
     } else {
       this.setState({
@@ -40,6 +40,15 @@ class PetsPage extends Component {
       currentCat: this.props.petsData.firstCat.next,
       currentDog: this.props.petsData.firstDog.next
     })
+  }
+
+  static getDerivedStateFromProps = (props, state) => {
+    return {
+      firstCat: props.petsData.firstCat.next,
+      firsDog: props.petsData.firstDog.next,
+      currentCat: props.petsData.firstCat.next,
+      currentDog: props.petsData.firstDog.next
+    }
   }
 
   render() {
