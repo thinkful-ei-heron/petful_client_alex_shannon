@@ -3,41 +3,88 @@ import React, { Component } from 'react';
 class AdoptionPage extends Component {
   state = {
     currentCat: null,
-    currentDog: null
+    currentDog: null,
+    users: null,
+    usersList: null,
+    userName: null
+  }
+
+  createUserList = () => {
+    let usersListUpdate = [];
+    let currUser = this.state.users
+    while(currUser.next) {
+      usersListUpdate.push(currUser.value)
+      currUser = currUser.next;
+    }
+    this.setState({
+      usersList: usersListUpdate
+    })
+    return usersListUpdate;
   }
 
   componentDidMount() {
+    this.createUserList()
     this.setState({
       currentCat: this.props.petsData.firstCat,
-      currentDog: this.props.petsData.firstDog
+      currentDog: this.props.petsData.firstDog,
+      users: this.props.petsData.users
     })
-    console.log(this.state.currentCat);
+    setInterval(this.createUserList, 1000)
   }
 
   static getDerivedStateFromProps = (props, state) => {
+    let usersListUpdate = [];
+    if(state.users) {
+      let currUser = state.users
+      while(currUser.next) {
+        usersListUpdate.push(currUser.value)
+        currUser = currUser.next;
+      }
+    }
+    
     return {
       currentCat: props.petsData.firstCat,
-      currentDog: props.petsData.firstDog
+      currentDog: props.petsData.firstDog,
+      users: props.petsData.users,
+      usersList: usersListUpdate
     }
+  }
+
+  handleJoin = (e) => {
+    e.preventDefault();
+    let user = e.target.user.value;
+    this.setState({
+      userName: user
+    })
+    this.props.joinQueue(user);
   }
 
   handleAdoptCatButton = (e) => {
     e.preventDefault();
+    this.setState({
+      userName: null
+    })
     this.props.adoptCat();
   }
 
   handleAdoptDogButton = (e) => {
     e.preventDefault();
+    this.setState({
+      userName: null
+    })
     this.props.adoptDog();
   }
 
   handleAdoptBothButton = (e) => {
     e.preventDefault();
+    this.setState({
+      userName: null
+    })
     this.props.adoptBoth();
   }
 
   render() {
-    console.log(this.state.currentCat);
+
     let currentCat = this.state.currentCat ? this.state.currentCat.value : null;
     let currentDog = this.state.currentDog ? this.state.currentDog.value : null
     return (
@@ -56,7 +103,7 @@ class AdoptionPage extends Component {
           <li>breed: {currentCat.breed}</li>
           <li>story: {currentCat.story}</li>
           </ul>
-          <button onClick={(e) => this.handleAdoptCatButton(e)}>Adopt Cat</button>
+         
           </>
           }
           
@@ -74,13 +121,36 @@ class AdoptionPage extends Component {
           <li>breed: {currentDog.breed}</li>
           <li>story: {currentDog.story}</li>
           </ul>
-          <button onClick={(e) => this.handleAdoptDogButton(e)}>Adopt Dog</button>
+          
           </>
           }
 
         </div>
-        <button onClick={(e) => this.handleAdoptBothButton(e)}>Adopt Both</button>
-        <button>JOIN THE QUEUE</button>
+        
+        
+      
+        {this.state.userName ?
+        <></> :
+        <form onSubmit={(e) => this.handleJoin(e)}>
+          <input name='user'></input>
+          <button type='submit'>JOIN THE QUEUE</button>
+        </form>}
+
+        {this.state.users.value !== this.state.userName ?
+            <></>
+          : <>
+               <button onClick={(e) => this.handleAdoptCatButton(e)}>Adopt Cat</button>
+               <button onClick={(e) => this.handleAdoptDogButton(e)}>Adopt Dog</button>
+               <button onClick={(e) => this.handleAdoptBothButton(e)}>Adopt Both</button>
+            </>
+      
+        }
+        {this.state.usersList && 
+          <ol>
+            {this.state.usersList.map((value, index) => {
+              return <li key={index}>{value}</li>
+            })}
+          </ol>}
       </div>
     )
   }

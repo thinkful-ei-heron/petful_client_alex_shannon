@@ -8,7 +8,28 @@ import PetsPage from './PetsPage/PetsPage';
 class App extends Component {
   state = {
     firstDog: {},
-    firstCat: {}
+    firstCat: {},
+    users: []
+  }
+
+  setUsers = () => {
+    let url = 'http://localhost:8000/api/'
+    fetch(url + 'users', {
+      method: 'GET',
+      headers: { 'content-type': 'application/json' }
+    })
+      .then(res => {
+        if(!res.ok) {
+          throw new Error(res.status)
+        }
+        return res.json()
+      })
+      .then(data => {
+        this.setState({
+          users: data
+        })
+      })
+
   }
 
   setFirstCat = () => {
@@ -63,8 +84,8 @@ class App extends Component {
     })
     .then(() => {
       this.setState({
-        firstCat: this.state.firstCat.next ? this.state.firstCat.next : null
-        //remove user from state here
+        firstCat: this.state.firstCat.next ? this.state.firstCat.next : null,
+        users: this.state.users.next ? this.state.users.next : null
       })
     })
   }
@@ -83,8 +104,30 @@ class App extends Component {
     })
     .then(() => {
       this.setState({
-        firstDog: this.state.firstDog.next ? this.state.firstDog.next : null
-        //remove user from state here
+        firstDog: this.state.firstDog.next ? this.state.firstDog.next : null,
+        users: this.state.users.next ? this.state.users.next : null
+      })
+    })
+  }
+
+  joinQueue = (user) => {
+    let url = 'http://localhost:8000/api/'
+    let input = { user }
+    fetch(url + 'users', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify(input)
+  })
+    .then(res => {
+      if (!res.ok) {
+        throw new Error(res.status)
+      }
+      return res.json()
+    })
+    .then(res => {
+      console.log(res);
+      this.setState({
+        users: res
       })
     })
   }
@@ -104,8 +147,8 @@ class App extends Component {
     .then(() => {
       this.setState({
         firstCat: this.state.firstCat.next ? this.state.firstCat.next : null,
-        firstDog: this.state.firstDog.next ? this.state.firstDog.next : null
-        //remove user from state here
+        firstDog: this.state.firstDog.next ? this.state.firstDog.next : null,
+        users: this.state.users.next ? this.state.users.next : null
       })
     })
   }
@@ -113,9 +156,11 @@ class App extends Component {
   componentDidMount() {
     this.setFirstCat();
     this.setFirstDog();
+    this.setUsers();
 
-    setInterval(this.setFirstCat, 30000);
-    setInterval(this.setFirstDog, 30000);
+    setInterval(this.setUsers, 5000);
+    setInterval(this.setFirstCat, 5000);
+    setInterval(this.setFirstDog, 5000);
   }
   render() {
     return (
@@ -137,6 +182,7 @@ class App extends Component {
           adoptCat={this.adoptCat}
           adoptDog={this.adoptDog}
           adoptBoth= {this.adoptBoth}
+          joinQueue= {this.joinQueue}
           /> 
         }}/>
         <Route path='/Pets' render={() => {
