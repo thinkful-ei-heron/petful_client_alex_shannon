@@ -177,7 +177,7 @@ class App extends Component {
   resetData = (e) => {
     e.preventDefault();
     let url = config.API_ENDPOINT
-    fetch(url + 'admin', {
+    fetch(url + 'admin/', {
       method: 'DELETE',
       headers: {'content-type': 'application/json'}
     })
