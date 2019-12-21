@@ -192,13 +192,13 @@ class App extends Component {
     return (
       <div>
         <header>
+          <Link to='/'><button className='logo-button'><h1>PETFUL: FIFO ADOPTION</h1></button></Link>
           <nav className='nav-bar'>
-            <Link to='/Success'><button>Success</button></Link>
-            <Link to='Pets'><button>Pets</button></Link>
-            <Link to='/Adoptions'><button>Adoptions</button></Link>
+            <Link to='Pets'><button className='nav-button'>Pets</button></Link>
+            <Link to='/Adoptions'><button className='nav-button'>Adopt Now</button></Link>
+            <Link to='/Success'><button className='nav-button'>Success</button></Link>
           </nav>
-          <Link to='/'><button><h1>PETFUL: FIFO ADOPTION</h1></button></Link>
-        </header>
+          </header>
 
 
         <Route exact path='/' component={InfoPage} />

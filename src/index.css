@@ -16,3 +16,37 @@ img {
   height: 200px;
   width: 350px;
 }
+
+header {
+  width: 100%;
+  text-align: center;
+}
+
+.logo-button {
+  width: 100%;
+  background: transparent;
+  border: none;
+  color: #104D73;
+  font-size: 1.4rem;
+}
+
+.logo-button:hover{
+  background-color: #E0E2F2;
+}
+
+nav {
+  border: 1px solid lightgrey;
+}
+
+.nav-button {
+  margin-left: 10px;
+  margin-right:10px;
+  border: none;
+  height: 40px;
+  width: 80px;
+  font-size: 0.8rem;
+}
+
+.nav-button:hover {
+  background-color: #E0E2F2;
+}

@@ -19,11 +19,13 @@ class PetsPage extends Component {
       })
     }
   }
-
+//handleNextCat was not working- it appears that since we have static props set it is 
+// not allowing us to setState within our function. 
   handleNextCat = () => {
     if(this.state.currentCat.next) {
+      let nextCat= this.state.currentCat.next;
       this.setState({
-        currentCat: this.state.currentCat.next
+        currentCat: nextCat
       })
     } else {
       this.setState({
