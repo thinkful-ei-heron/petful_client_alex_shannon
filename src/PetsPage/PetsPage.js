@@ -25,7 +25,6 @@ class PetsPage extends Component {
   }
 
   handleNextCat = () => {
-    console.log('click')
     if(this.state.currentCat) {
       if(this.state.currentCat.next) {
         let nextCat = this.state.currentCat.next;

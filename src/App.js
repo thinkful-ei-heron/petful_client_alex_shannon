@@ -146,7 +146,6 @@ class App extends Component {
       return res.json()
     })
     .then(res => {
-      console.log(res);
       this.setState({
         users: res
       })
