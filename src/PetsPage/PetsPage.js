@@ -41,26 +41,30 @@ class PetsPage extends Component {
   }  
 
   componentDidMount() {
-    this.setState({
-      firstCat: this.props.petsData.firstCat.next,
-      firstDog: this.props.petsData.firstDog.next,
-      currentCat: this.props.petsData.firstCat.next,
-      currentDog: this.props.petsData.firstDog.next
-    })
+    if(this.props.petsData.firstCat && this.props.petsData.firstCat) {
+      this.setState({
+        firstCat: this.props.petsData.firstCat.next,
+        firstDog: this.props.petsData.firstDog.next,
+        currentCat: this.props.petsData.firstCat.next,
+        currentDog: this.props.petsData.firstDog.next
+      })
+    }
   }
 
   static getDerivedStateFromProps = (props, state) => {
-    if((!state.currentCat || !state.currentDog) && (props.petsData.firstCat && props.petsData.firstDog)) {
+    if(props.petsData.firstCat && props.petsData.firstDog){
+      if(!state.currentCat || !state.currentDog) {
       return {
         firstCat: props.petsData.firstCat.next,
         firstDog: props.petsData.firstDog.next,
         currentCat: props.petsData.firstCat.next,
         currentDog: props.petsData.firstDog.next
+        }
       }
-    }
-    return {
-      firstCat: props.petsData.firstCat.next,
-      firstDog: props.petsData.firstDog.next
+      return {
+        firstCat: props.petsData.firstCat.next,
+        firstDog: props.petsData.firstDog.next
+      }
     }
   }
 

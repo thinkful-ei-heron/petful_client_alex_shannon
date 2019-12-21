@@ -21,7 +21,7 @@
 
 #### Relevant Links
   Github repo: https://github.com/thinkful-ei-heron/petful_client_alex_shannon
-  Live App:
+  Live App: https://petful-client.rbannal.now.sh/
   Server Github repo: https://github.com/thinkful-ei-heron/petful_server_alex_shannon
   Server URL: https://salty-hollows-30740.herokuapp.com/
 
