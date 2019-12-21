@@ -61,7 +61,13 @@ class AdoptionPage extends Component {
     this.setState({
       userName: user,
     })
-    this.props.joinQueue(user);
+    this.props.joinQueue(user)
+    // .then(
+    //   this.setState({
+    //     usersList: this.props.petsData.users
+    //   })
+    // )
+    
   }
 
   handleAdoptCatButton = (e) => {

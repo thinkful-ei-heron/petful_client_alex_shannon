@@ -4,53 +4,73 @@ import './PetsPage.css';
 class PetsPage extends Component {
   state = {
     firstCat: null,
-    firsDog: null,
+    firstDog: null,
     currentCat: null,
     currentDog: null
   }
 
   handleNextDog = () => {
-    if(this.state.currentDog.next) {
-      this.setState({
-        currentDog: this.state.currentDog.next
-      })
-    } else {
-      this.setState({
-        currentDog: this.state.firstDog
-      })
+    if(this.state.currentDog) {
+      if(this.state.currentDog.next) {
+        let nextDog = this.state.currentDog.next;
+        this.setState({
+          currentDog: nextDog
+        })
+      } else {
+        this.setState({
+          currentDog: this.state.firstDog
+        })
+      }
     }
+     
   }
 //handleNextCat was not working- it appears that since we have static props set it is 
 // not allowing us to setState within our function. 
   handleNextCat = () => {
-    if(this.state.currentCat.next) {
-      let nextCat= this.state.currentCat.next;
-      this.setState({
-        currentCat: nextCat
-      })
-    } else {
-      this.setState({
-        currentCat: this.state.firstCat
-      })
-    }
+    console.log('click')
+    if(this.state.currentCat) {
+      if(this.state.currentCat.next) {
+        let nextCat = this.state.currentCat.next;
+        this.setState({
+          currentCat: nextCat
+        })
+      } else {
+        this.setState({
+          currentCat: this.state.firstCat
+        })
+      }
+    }  
   }  
 
   componentDidMount() {
-    console.log(this.props.petsData.firstCat);
     this.setState({
       firstCat: this.props.petsData.firstCat.next,
-      firsDog: this.props.petsData.firstDog.next,
+      firstDog: this.props.petsData.firstDog.next,
       currentCat: this.props.petsData.firstCat.next,
       currentDog: this.props.petsData.firstDog.next
     })
   }
 
   static getDerivedStateFromProps = (props, state) => {
+    // if(state.firstDog !== props.firstDog || state.firstCat !== props.firstCat) {
+    //   return {
+    //     firstCat: props.petsData.firstCat.next,
+    //     firstDog: props.petsData.firstDog.next,
+    //   }
+    // }
+    if(!state.currentCat || !state.currentDog) {
+      return {
+        firstCat: props.petsData.firstCat.next,
+        firstDog: props.petsData.firstDog.next,
+        currentCat: props.petsData.firstCat.next,
+        currentDog: props.petsData.firstDog.next
+      }
+    }
     return {
       firstCat: props.petsData.firstCat.next,
-      firsDog: props.petsData.firstDog.next,
-      currentCat: props.petsData.firstCat.next,
-      currentDog: props.petsData.firstDog.next
+      firstDog: props.petsData.firstDog.next,
+      // currentCat: props.petsData.firstCat.next,
+      // currentDog: props.petsData.firstDog.next
     }
   }
 
@@ -84,7 +104,8 @@ class PetsPage extends Component {
               <div className='animal-names'>
               <span id='dog-name'>{this.state.currentDog.value.name}</span>
               </div>
-            </>}
+            </>
+            }
           <button className='next-button' onClick={e =>{
             e.preventDefault()
             this.handleNextDog()

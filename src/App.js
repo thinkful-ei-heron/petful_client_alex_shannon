@@ -173,6 +173,29 @@ class App extends Component {
     })
   }
 
+  resetData = (e) => {
+    e.preventDefault();
+    console.log('RESETTING')
+    let url = 'http://localhost:8000/api/'
+    fetch(url + 'admin', {
+      method: 'DELETE',
+      headers: {'content-type': 'application/json'}
+    })
+    .then(res => {
+      if (!res.ok) {
+        throw new Error(res.status)
+      }
+      return
+    })
+    .then(() => {
+      this.setState({
+        firstCat: this.state.firstCat.next ? this.state.firstCat.next : null,
+        firstDog: this.state.firstDog.next ? this.state.firstDog.next : null,
+        users: this.state.users.next ? this.state.users.next : null
+      })
+    })
+  }
+
   componentDidMount() {
     this.setFirstCat();
     this.setFirstDog();
@@ -198,17 +221,15 @@ class App extends Component {
             <Link to='/Adoptions'><button className='nav-button'>Adopt Now</button></Link>
             <Link to='/Success'><button className='nav-button'>Success</button></Link>
           </nav>
-          </header>
-
-
+        </header>
         <Route exact path='/' component={InfoPage} />
         <Route path='/Adoptions' render = {() => {
-        return <AdoptionPage 
-          petsData={this.state} 
-          adoptCat={this.adoptCat}
-          adoptDog={this.adoptDog}
-          adoptBoth= {this.adoptBoth}
-          joinQueue= {this.joinQueue}
+          return <AdoptionPage 
+            petsData={this.state} 
+            adoptCat={this.adoptCat}
+            adoptDog={this.adoptDog}
+            adoptBoth= {this.adoptBoth}
+            joinQueue= {this.joinQueue}
           /> 
         }}/>
         <Route path='/Pets' render={() => {
@@ -217,7 +238,7 @@ class App extends Component {
         <Route path='/Success' render = {() => {
           return <SuccessPage successes={this.state.successes} />
         }}/>
-
+        <button id='reset-button-test' onClick = {(e) => this.resetData(e)}>RESET SERVER DATA</button>
       </div>
     )
   }

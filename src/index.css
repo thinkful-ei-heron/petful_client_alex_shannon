@@ -54,3 +54,13 @@ nav {
 .nav-button:hover {
   background-color: #E0E2F2;
 }
+
+#reset-button-test {
+  color: red;
+  background-color: black;
+  font-weight: bolder;
+  height: 50px;
+  width: 20%;
+  margin-left: 40%;
+  margin-right: 40%;
+}
