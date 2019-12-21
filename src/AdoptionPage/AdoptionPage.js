@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './AdoptionPage.css';
 
 class AdoptionPage extends Component {
   state = {
@@ -96,8 +97,9 @@ class AdoptionPage extends Component {
     let currentCat = this.state.currentCat ? this.state.currentCat.value : null;
     let currentDog = this.state.currentDog ? this.state.currentDog.value : null
     return (
-      <div>
-        <h2>CURRENT ADOPTIONS</h2>
+      <div className='adopt-now-page'>
+        <h2>ADOPT NOW</h2>
+        <div className='adoption-options'>
         <div>
           <h3>AVAILABLE CAT</h3>
           {!currentCat
@@ -105,13 +107,12 @@ class AdoptionPage extends Component {
           : <>
           <img src={this.state.currentCat.value.imageURL} alt={this.state.currentCat.value.imageDescription}/>
           <ul>
-          <li>Name: {currentCat.name}</li>
-          <li>age:{currentCat.age}</li>
-          <li>sex: {currentCat.sex}</li>
-          <li>breed: {currentCat.breed}</li>
-          <li>story: {currentCat.story}</li>
+            <li><span className='pet-details'>Name:</span> {currentCat.name}</li>
+            <li><span className='pet-details'>Age:</span>{currentCat.age}</li>
+            <li><span className='pet-details'>Sex:</span> {currentCat.sex}</li>
+            <li><span className='pet-details'>Breed:</span> {currentCat.breed}</li>
+            <li><span className='pet-details'>Story:</span> {currentCat.story}</li>
           </ul>
-         
           </>
           }
           
@@ -123,36 +124,41 @@ class AdoptionPage extends Component {
           : <>
           <img src={this.state.currentDog.value.imageURL} alt={this.state.currentDog.value.imageDescription}/>
           <ul>
-          <li>Name: {currentDog.name}</li>
-          <li>age:{currentDog.age}</li>
-          <li>sex: {currentDog.sex}</li>
-          <li>breed: {currentDog.breed}</li>
-          <li>story: {currentDog.story}</li>
+            <li><span className='pet-details'>Name:</span> {currentDog.name}</li>
+            <li><span className='pet-details'>Age:</span>{currentDog.age}</li>
+            <li><span className='pet-details'>Sex:</span> {currentDog.sex}</li>
+            <li><span className='pet-details'>Breed:</span> {currentDog.breed}</li>
+            <li><span className='pet-details'>Story:</span> {currentDog.story}</li>
           </ul>
           
           </>
           }
 
         </div>
+        </div>
         
-        
-      
+      <h2>Adoption Queue</h2>
         {this.state.userName ?
         <></> :
         <form onSubmit={(e) => this.handleJoin(e)}>
-          <input name='user'></input>
-          <button type='submit'>JOIN THE QUEUE</button>
+          <p>Please submit your name below to join the queue.</p>
+          <div>
+            <label htmlFor='user'>Name:</label>
+            <input type='text' name='user' required></input>
+          </div>
+          <button className='join-queue-button' type='submit'>Put Me In Line to Adopt</button>
         </form>}
 
         {this.state.users.value !== this.state.userName ?
             <></>
           : <>
-               <button onClick={(e) => this.handleAdoptCatButton(e)}>Adopt Cat</button>
-               <button onClick={(e) => this.handleAdoptDogButton(e)}>Adopt Dog</button>
-               <button onClick={(e) => this.handleAdoptBothButton(e)}>Adopt Both</button>
+              <button onClick={(e) => this.handleAdoptCatButton(e)}>Adopt Cat</button>
+              <button onClick={(e) => this.handleAdoptDogButton(e)}>Adopt Dog</button>
+              <button onClick={(e) => this.handleAdoptBothButton(e)}>Adopt Both</button>
             </>
       
         }
+       
         {this.state.usersList && 
           <ol>
             {this.state.usersList.map((value, index) => {

@@ -1,0 +1,70 @@
+.adopt-now-page{
+  width: 80%;
+  margin-left:auto;
+  margin-right: auto;
+}
+
+.adopt-now-page > h2 {
+  text-align: center;
+  color: #27798C
+}
+
+.adoption-options {
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.adoption-options > div > h3 {
+  color: #9AD9A3;
+  text-align: center;
+  font-size: 1.3rem;
+}
+
+.adoption-options > div > ul {
+  list-style:none;
+  padding:0px;
+}
+
+.pet-details {
+  color:  #104D73;
+  font-weight:bolder;
+  margin-right: 5px;
+}
+
+ol {
+  width: 80%;
+  margin-left:auto;
+  margin-right:auto;
+  margin-bottom: 50px;
+  border: 1px solid lightgrey;
+  height: 200px;
+  overflow:auto;
+  padding-top: 10px;
+}
+
+form {
+  text-align:center;
+}
+
+.join-queue-button{
+  height: 40px;
+  margin-top: 5px;
+  background-color:transparent;
+  font-size: 0.8rem;
+}
+
+.join-queue-button:hover {
+  background-color: #E0E2F2;
+}
+
+@media only screen and (min-width: 550px) {
+  .adoption-options {
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+  .adoption-options > div{
+    margin: 2px;
+  }
+}
