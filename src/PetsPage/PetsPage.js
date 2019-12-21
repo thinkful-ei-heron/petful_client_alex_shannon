@@ -50,7 +50,7 @@ class PetsPage extends Component {
   }
 
   static getDerivedStateFromProps = (props, state) => {
-    if(!state.currentCat || !state.currentDog) {
+    if((!state.currentCat || !state.currentDog) && (props.petsData.firstCat && props.petsData.firstDog)) {
       return {
         firstCat: props.petsData.firstCat.next,
         firstDog: props.petsData.firstDog.next,

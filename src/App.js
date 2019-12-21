@@ -174,27 +174,27 @@ class App extends Component {
     })
   }
 
-  resetData = (e) => {
-    e.preventDefault();
-    let url = config.API_ENDPOINT
-    fetch(url + 'admin/', {
-      method: 'DELETE',
-      headers: {'content-type': 'application/json'}
-    })
-    .then(res => {
-      if (!res.ok) {
-        throw new Error(res.status)
-      }
-      return
-    })
-    .then(() => {
-      this.setState({
-        firstCat: this.state.firstCat.next ? this.state.firstCat.next : null,
-        firstDog: this.state.firstDog.next ? this.state.firstDog.next : null,
-        users: this.state.users.next ? this.state.users.next : null
-      })
-    })
-  }
+  // resetData = (e) => {
+  //   e.preventDefault();
+  //   let url = config.API_ENDPOINT
+  //   fetch(url + 'admin/', {
+  //     method: 'DELETE',
+  //     headers: {'content-type': 'application/json'}
+  //   })
+  //   .then(res => {
+  //     if (!res.ok) {
+  //       throw new Error(res.status)
+  //     }
+  //     return
+  //   })
+  //   .then(() => {
+  //     this.setState({
+  //       firstCat: this.state.firstCat.next ? this.state.firstCat.next : null,
+  //       firstDog: this.state.firstDog.next ? this.state.firstDog.next : null,
+  //       users: this.state.users.next ? this.state.users.next : null
+  //     })
+  //   })
+  // }
 
   componentDidMount() {
     this.setFirstCat();
@@ -238,7 +238,7 @@ class App extends Component {
         <Route path='/Success' render = {() => {
           return <SuccessPage successes={this.state.successes} />
         }}/>
-        <button id='reset-button-test' onClick = {(e) => this.resetData(e)}>RESET SERVER DATA</button>
+        {/* <button id='reset-button-test' onClick = {(e) => this.resetData(e)}>RESET SERVER DATA</button> */}
       </div>
     )
   }
