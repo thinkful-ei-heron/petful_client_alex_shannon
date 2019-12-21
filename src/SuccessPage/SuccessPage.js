@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import SuccessInfo from './SuccessInfo';
-
+import './SuccessPage.css';
 class SuccessPage extends Component {
   state = {
     successes: null,
@@ -30,9 +30,11 @@ class SuccessPage extends Component {
 
   render() {
     return (
-      <div>
-        <h2>THESE ANIMALS WERE ADOPTED</h2>
-        {this.state.successes && this.renderSuccesses()}
+      <div className='success-page'>
+        <h2>SUCCESS STORIES</h2>
+        <div className='adopted-info'>
+          {this.state.successes && this.renderSuccesses()}
+        </div>
       </div>
     )
   }

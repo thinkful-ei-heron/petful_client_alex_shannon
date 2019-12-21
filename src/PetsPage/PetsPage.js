@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './PetsPage.css';
 
 class PetsPage extends Component {
   state = {
@@ -55,34 +56,42 @@ class PetsPage extends Component {
 
   render() {
     return (
-      <div>
-        <h2>THESE ANIMALS WILL BE AVAILABLE FOR ADOPTION</h2>
-        <div id='adoptable-cat'>
+    <>
+    <h2 className='pets-page-header'>AVAILABLE SOON</h2>
+      <div className='pets-page'>
+        <div id='adoptable-cat' className='next-animals'>
           <h3>CATS</h3>
           {!this.state.currentCat 
           ? <h4>No Cats Available</h4>  
           : <>
               <img src={this.state.currentCat.value.imageURL} alt={this.state.currentCat.value.imageDescription} />
-              <span id='cat-name'>{this.state.currentCat.value.name}</span>
+              <div className='animal-names'>
+                <span id='cat-name'>{this.state.currentCat.value.name}</span>
+              </div>
             </>}
-          <button onClick={e =>{
+          <button className='next-button' onClick={e =>{
             e.preventDefault()
             this.handleNextCat()
           }}>NEXT CAT</button>
         </div>
         
+        <div className='next-animals'>
         <h3>DOGS</h3>
         {!this.state.currentDog 
           ? <h4>No Dogs Available</h4>  
           : <>
               <img src={this.state.currentDog.value.imageURL} alt={this.state.currentDog.value.imageDescription} />
+              <div className='animal-names'>
               <span id='dog-name'>{this.state.currentDog.value.name}</span>
+              </div>
             </>}
-          <button onClick={e =>{
+          <button className='next-button' onClick={e =>{
             e.preventDefault()
             this.handleNextDog()
           }}>NEXT DOG</button>
+        </div>
       </div>
+      </>
     )
   }
 }

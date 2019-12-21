@@ -22,6 +22,20 @@
 .enter-site-button:hover {
   background-color: #E0E2F2;
 }
+
+
+@media only screen and (min-width: 800px){
+  .site-details{
+    width: 60%;
+  }
+}
+
+@media only screen and (min-width: 950px){
+  .site-details{
+    width: 50%;
+  }
+}
+
 /* possible colors
 #27798C
 #D9D0A7

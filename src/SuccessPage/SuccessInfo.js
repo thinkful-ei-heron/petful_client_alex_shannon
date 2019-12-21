@@ -5,7 +5,7 @@ class SuccessInfo extends Component {
     return(
       <div>
         <img src={this.props.animal.imageURL} alt={this.props.animal.imageDescription}/>
-        <p>{this.props.animal.animalName} was adopted by {this.props.animal.humanName}</p>
+        <p className='adoption-details'>{this.props.animal.animalName} was adopted by {this.props.animal.humanName}</p>
       </div>
     )
   }

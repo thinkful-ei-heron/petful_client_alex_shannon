@@ -58,13 +58,34 @@ form {
   background-color: #E0E2F2;
 }
 
+.adopt-buttons{
+  display:flex;
+  justify-content: space-evenly;
+}
+.adopt-buttons > button {
+  height: 40px;
+  font-size:0.8rem;
+  margin: 10px;
+  background-color:transparent;
+}
+
+.adopt-buttons > button:hover {
+  background-color: #E0E2F2;
+}
+
 @media only screen and (min-width: 550px) {
   .adoption-options {
     display:flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-evenly;
   }
   .adoption-options > div{
     margin: 2px;
   }
+}
+
+@media only screen and (min-width: 800px){
+ol {
+  width: 40%;
+}
 }

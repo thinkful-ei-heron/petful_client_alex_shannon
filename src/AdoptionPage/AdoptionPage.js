@@ -59,7 +59,7 @@ class AdoptionPage extends Component {
     e.preventDefault();
     let user = e.target.user.value;
     this.setState({
-      userName: user
+      userName: user,
     })
     this.props.joinQueue(user);
   }
@@ -149,13 +149,13 @@ class AdoptionPage extends Component {
           <button className='join-queue-button' type='submit'>Put Me In Line to Adopt</button>
         </form>}
 
-        {this.state.users.value !== this.state.userName ?
+        {this.state.users && this.state.users.value !== this.state.userName ?
             <></>
-          : <>
+          : <div className= 'adopt-buttons'>
               <button onClick={(e) => this.handleAdoptCatButton(e)}>Adopt Cat</button>
               <button onClick={(e) => this.handleAdoptDogButton(e)}>Adopt Dog</button>
               <button onClick={(e) => this.handleAdoptBothButton(e)}>Adopt Both</button>
-            </>
+            </div>
       
         }
        
