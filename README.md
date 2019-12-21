@@ -1,68 +1,32 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Petful Client
 
-## Available Scripts
+#### Team Members
+ Alex Bannow and Shannon Lichtenwalter
 
-In the project directory, you can run:
+#### Introduction
+  Your future pet is waiting for you! Petful is an easy to use pet adoption site. We have dogs and cats available for adoption. Our motto here at Petful is 'First In First Out'. This means that we only have one dog and one cat available to adopt at a time. Only the cat and dog that have been at our shelter the longest are available for adoption.
 
-### `npm start`
+  So how does it work? If you are interested in adopting a pet please get in line to adopt. You will have to wait until it is your turn in line to adopt your new pet(s). Once you are first in line you will be given the option to adopt our available dog, our available cat, or both! You will have thirty seconds to decide if you would like to adopt before being moved to the back of the line again.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+  Be sure to check out our success story page to see all of the happy pets that have been adopted through Petful! Also, feel free to check out our Pets page to view pets that will soon be up for adoption.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+  ##### Adoption Page
+  ![AdoptionPage](./public/img/AdoptionPage.png)
 
-### `npm test`
+  ##### Pets Page
+  ![PetsPage](./public/img/PetsPage.png)
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+  ##### Success Page
+  ![SuccessPage](./public/img/SuccessPage.png)
 
-### `npm run build`
+#### Relevant Links
+  Github repo: https://github.com/thinkful-ei-heron/petful_client_alex_shannon
+  Live App:
+  Server Github repo: https://github.com/thinkful-ei-heron/petful_server_alex_shannon
+  Server URL: https://salty-hollows-30740.herokuapp.com/
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+#### Tech Stack
+  HTML
+  CSS
+  Javascript
+  React

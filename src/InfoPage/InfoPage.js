@@ -6,6 +6,7 @@ class InfoPage extends Component {
   render() {
     return (
       <div className='site-details'>
+        <img src="https://cdn.imgbin.com/12/21/2/imgbin-sign-super-meng-cute-cat-dog-queue-row-zmXuqhD7jQrZZCQSzaFDveHSQ.jpg" alt='Line of cats and dogs' />
         <h2>Welcome to Petful</h2>
         <p>Your future pet is waiting for you! Petful is an easy to use 
           pet adoption site. We have dogs and cats available for adoption. Our motto 

@@ -4,6 +4,7 @@ import AdoptionPage from './AdoptionPage/AdoptionPage';
 import InfoPage from './InfoPage/InfoPage';
 import SuccessPage from './SuccessPage/SuccessPage';
 import PetsPage from './PetsPage/PetsPage';
+import config from './config';
 
 class App extends Component {
   state = {
@@ -14,7 +15,7 @@ class App extends Component {
   }
 
   setSuccessStories = () => {
-    let url = 'http://localhost:8000/api/'
+    let url = config.API_ENDPOINT
     fetch(url + 'successes', {
       method: 'GET',
       headers: { 'content-type': 'application/json' }
@@ -33,7 +34,7 @@ class App extends Component {
   }
 
   setUsers = () => {
-    let url = 'http://localhost:8000/api/'
+    let url = config.API_ENDPOINT
     fetch(url + 'users', {
       method: 'GET',
       headers: { 'content-type': 'application/json' }
@@ -53,7 +54,7 @@ class App extends Component {
   }
 
   setFirstCat = () => {
-    let url = 'http://localhost:8000/api/'
+    let url = config.API_ENDPOINT
     fetch(url + 'cats', {
       method: 'GET',
       headers: { 'content-type': 'application/json' }
@@ -72,7 +73,7 @@ class App extends Component {
   }
 
   setFirstDog = () => {
-    let url = 'http://localhost:8000/api/'
+    let url = config.API_ENDPOINT
     fetch(url + 'dogs', {
       method: 'GET',
       headers: { 'content-type': 'application/json' }
@@ -91,7 +92,7 @@ class App extends Component {
   }
 
   adoptCat = () => {
-    let url = 'http://localhost:8000/api/'
+    let url = config.API_ENDPOINT
     fetch(url + 'cats', {
       method: 'DELETE',
       headers: { 'content-type': 'application/json' }
@@ -111,7 +112,7 @@ class App extends Component {
   }
 
   adoptDog = () => {
-    let url = 'http://localhost:8000/api/'
+    let url = config.API_ENDPOINT
     fetch(url + 'dogs', {
       method: 'DELETE',
       headers: { 'content-type': 'application/json' }
@@ -131,7 +132,7 @@ class App extends Component {
   }
 
   joinQueue = (user) => {
-    let url = 'http://localhost:8000/api/'
+    let url = config.API_ENDPOINT
     let input = { user }
     fetch(url + 'users', {
       method: 'POST',
@@ -153,7 +154,7 @@ class App extends Component {
   }
 
   adoptBoth = () => {
-    let url = 'http://localhost:8000/api/'
+    let url = config.API_ENDPOINT
     fetch(url + 'users', {
       method: 'DELETE',
       headers: { 'content-type': 'application/json' }
@@ -175,8 +176,7 @@ class App extends Component {
 
   resetData = (e) => {
     e.preventDefault();
-    console.log('RESETTING')
-    let url = 'http://localhost:8000/api/'
+    let url = config.API_ENDPOINT
     fetch(url + 'admin', {
       method: 'DELETE',
       headers: {'content-type': 'application/json'}

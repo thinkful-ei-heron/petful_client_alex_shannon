@@ -22,10 +22,8 @@ class PetsPage extends Component {
         })
       }
     }
-     
   }
-//handleNextCat was not working- it appears that since we have static props set it is 
-// not allowing us to setState within our function. 
+
   handleNextCat = () => {
     console.log('click')
     if(this.state.currentCat) {
@@ -52,12 +50,6 @@ class PetsPage extends Component {
   }
 
   static getDerivedStateFromProps = (props, state) => {
-    // if(state.firstDog !== props.firstDog || state.firstCat !== props.firstCat) {
-    //   return {
-    //     firstCat: props.petsData.firstCat.next,
-    //     firstDog: props.petsData.firstDog.next,
-    //   }
-    // }
     if(!state.currentCat || !state.currentDog) {
       return {
         firstCat: props.petsData.firstCat.next,
@@ -68,9 +60,7 @@ class PetsPage extends Component {
     }
     return {
       firstCat: props.petsData.firstCat.next,
-      firstDog: props.petsData.firstDog.next,
-      // currentCat: props.petsData.firstCat.next,
-      // currentDog: props.petsData.firstDog.next
+      firstDog: props.petsData.firstDog.next
     }
   }
 
