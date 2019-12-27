@@ -7,14 +7,14 @@ class AdoptionPage extends Component {
     currentDog: null,
     users: null,
     usersList: null,
-    userName: null,
+    userName: null || window.localStorage.petful_user_name,
     createUserInterval: null,
   }
 
   createUserList = () => {
     let usersListUpdate = [];
     let currUser = this.state.users
-    while(currUser.next) {
+    while(currUser) {
       usersListUpdate.push(currUser.value)
       currUser = currUser.next;
     }
@@ -58,17 +58,35 @@ class AdoptionPage extends Component {
   handleJoin = (e) => {
     e.preventDefault();
     let user = e.target.user.value;
+    window.localStorage.setItem('petful_user_name', user)
     this.setState({
       userName: user,
     })
-    this.props.joinQueue(user)
-    // .then(
-    //   this.setState({
-    //     usersList: this.props.petsData.users
-    //   })
-    // )
+  
+    this.setState({
+      users: this.props.joinQueue(user)
+    })
+    this.createUserList();
+    this.createVisualList();
+  }
+
+  createVisualList = () => {
+    let firstList = this.props.petsData.users;
+    let testUserList = [];
+    while(firstList) {
+      testUserList.push(firstList.value);
+      firstList = firstList.next;
+    }
+    if(testUserList[0] === undefined) return <p>Updating List</p>
+    if(testUserList[0] !== undefined) {
+        return testUserList.map((value, index) => { 
+        // console.log(value)
+        return <li key={index}>{value}</li>
+      })
+    }
     
   }
+  //testRenderList = () => {return testUserList.map((value,index) => { return <li key={index}>{value}</li> }) }
 
   handleAdoptCatButton = (e) => {
     e.preventDefault();
@@ -165,11 +183,12 @@ class AdoptionPage extends Component {
       
         }
        
-        {this.state.usersList && 
+        {this.props.petsData.users &&
           <ol>
-            {this.state.usersList.map((value, index) => {
+            {this.createVisualList()}
+            {/* {this.state.usersList.map((value, index) => {
               return <li key={index}>{value}</li>
-            })}
+            })} */}
           </ol>}
       </div>
     )

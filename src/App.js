@@ -92,6 +92,7 @@ class App extends Component {
   }
 
   adoptCat = () => {
+    window.localStorage.clear()
     let url = config.API_ENDPOINT
     fetch(url + 'cats', {
       method: 'DELETE',
@@ -112,6 +113,7 @@ class App extends Component {
   }
 
   adoptDog = () => {
+    window.localStorage.clear()
     let url = config.API_ENDPOINT
     fetch(url + 'dogs', {
       method: 'DELETE',
@@ -149,10 +151,12 @@ class App extends Component {
       this.setState({
         users: res
       })
+      return this.state.users
     })
   }
 
   adoptBoth = () => {
+    window.localStorage.clear()
     let url = config.API_ENDPOINT
     fetch(url + 'users', {
       method: 'DELETE',
