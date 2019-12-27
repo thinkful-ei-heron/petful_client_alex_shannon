@@ -80,13 +80,11 @@ class AdoptionPage extends Component {
     if(testUserList[0] === undefined) return <p>Updating List</p>
     if(testUserList[0] !== undefined) {
         return testUserList.map((value, index) => { 
-        // console.log(value)
         return <li key={index}>{value}</li>
       })
     }
     
   }
-  //testRenderList = () => {return testUserList.map((value,index) => { return <li key={index}>{value}</li> }) }
 
   handleAdoptCatButton = (e) => {
     e.preventDefault();
@@ -186,9 +184,6 @@ class AdoptionPage extends Component {
         {this.props.petsData.users &&
           <ol>
             {this.createVisualList()}
-            {/* {this.state.usersList.map((value, index) => {
-              return <li key={index}>{value}</li>
-            })} */}
           </ol>}
       </div>
     )
